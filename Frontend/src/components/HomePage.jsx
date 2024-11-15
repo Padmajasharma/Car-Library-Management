@@ -72,15 +72,15 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 py-10">
+    <div className="min-h-screen bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-400 py-16">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-extrabold text-white mb-4">
-            Manage Your Cars
+          <h1 className="text-6xl font-extrabold text-white leading-tight mb-4">
+            Manage Your Cars with Ease
           </h1>
-          <p className="text-lg text-gray-100 max-w-2xl mx-auto">
-            Seamlessly organize and manage your car inventory with a beautiful and intuitive dashboard.
+          <p className="text-lg text-gray-100 max-w-2xl mx-auto opacity-80">
+            Effortlessly organize and manage your car inventory with our intuitive and sleek dashboard.
           </p>
         </div>
 
@@ -91,18 +91,18 @@ const HomePage = () => {
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-6 py-3 rounded-xl shadow-lg text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-blue-300 outline-none transition-all"
+            className="w-full max-w-lg px-6 py-3 rounded-xl shadow-lg bg-white text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-indigo-300 outline-none transition-all"
           />
           <button
             onClick={handleSearch}
-            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-xl hover:bg-blue-700 hover:shadow-2xl transition-all"
+            className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl shadow-xl hover:bg-indigo-700 hover:shadow-2xl transition-all"
           >
             Search
           </button>
         </div>
 
         {/* Add Car Button */}
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-end mb-12">
           <button
             onClick={() => navigate("/addcar")}
             className="px-6 py-3 bg-green-500 text-white font-semibold rounded-xl shadow-xl hover:bg-green-600 hover:shadow-2xl transition-all"
@@ -112,19 +112,19 @@ const HomePage = () => {
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer transform hover:scale-105"
+                className="p-6 bg-white rounded-xl shadow-2xl hover:shadow-3xl transition-all cursor-pointer transform hover:scale-105"
               >
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-3xl font-semibold text-gray-800 mb-4 hover:text-indigo-500 transition-colors">
                   {car.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{car.description}</p>
-                <div className="text-sm text-gray-500 space-y-1 mb-4">
+                <p className="text-gray-600 mb-6">{car.description}</p>
+                <div className="text-sm text-gray-500 space-y-1 mb-6">
                   <p>
                     <strong>Type:</strong> {car.tags.car_type}
                   </p>
@@ -141,7 +141,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       navigate(`/editcar/${car._id}`);
                     }}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 shadow-md transition-all"
+                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 shadow-md transition-all"
                   >
                     Edit
                   </button>
