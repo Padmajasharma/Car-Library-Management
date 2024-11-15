@@ -72,57 +72,59 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 via-white to-blue-100 py-8">
-      <div className="container mx-auto px-6 lg:px-12">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10">
+      <div className="container mx-auto px-4 lg:px-12">
         {/* Header */}
-        <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
-            Car Management System
+        <div className="text-center mb-12">
+          <h1 className="text-6xl font-extrabold text-gray-800 mb-4">
+            Manage Your Cars
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Manage your car inventory effortlessly.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Easily organize and manage your car inventory with our intuitive dashboard.
           </p>
-          <div className="flex justify-center items-center">
-            <input
-              type="text"
-              placeholder="Search cars..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full max-w-md px-4 py-3 text-gray-700 rounded-lg shadow-sm border-2 border-gray-300 focus:ring-2 focus:ring-blue-500 transition"
-            />
-            <button
-              onClick={handleSearch}
-              className="ml-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition"
-            >
-              Search
-            </button>
-          </div>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex justify-center items-center mb-8">
+          <input
+            type="text"
+            placeholder="Search cars by title, description, or tags..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-lg px-4 py-3 rounded-xl shadow-md text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-blue-300 outline-none transition-all"
+          />
+          <button
+            onClick={handleSearch}
+            className="ml-4 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all"
+          >
+            Search
+          </button>
         </div>
 
         {/* Add Car Button */}
-        <div className="flex justify-end mt-8">
+        <div className="flex justify-end mb-8">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition"
+            className="px-6 py-3 bg-green-500 text-white font-bold rounded-xl shadow-lg hover:bg-green-600 hover:shadow-xl transition-all"
           >
             + Add New Car
           </button>
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
+                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer"
               >
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                <h3 className="text-3xl font-bold text-gray-800 mb-2">
                   {car.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{car.description}</p>
-                <div className="text-sm text-gray-500 space-y-1">
+                <div className="text-sm text-gray-500 space-y-1 mb-4">
                   <p>
                     <strong>Type:</strong> {car.tags.car_type}
                   </p>
@@ -133,13 +135,13 @@ const HomePage = () => {
                     <strong>Dealer:</strong> {car.tags.dealer}
                   </p>
                 </div>
-                <div className="flex justify-between mt-6">
+                <div className="flex justify-between">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/editcar/${car._id}`);
                     }}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium shadow-md hover:bg-blue-600 transition"
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 shadow-md transition-all"
                   >
                     Edit
                   </button>
@@ -148,7 +150,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       handleDelete(car._id);
                     }}
-                    className="px-4 py-2 bg-red-500 text-white rounded-md font-medium shadow-md hover:bg-red-600 transition"
+                    className="px-4 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 shadow-md transition-all"
                   >
                     Delete
                   </button>
@@ -157,7 +159,7 @@ const HomePage = () => {
             ))
           ) : (
             <p className="text-center text-gray-500 text-lg col-span-full">
-              No cars found.
+              No cars found. Try searching with different keywords.
             </p>
           )}
         </div>
