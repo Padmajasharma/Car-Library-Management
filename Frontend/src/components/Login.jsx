@@ -53,64 +53,74 @@ function Login() {
     };
 
     return (
-        <div className="bg-gradient-to-r from-blue-50 via-white to-blue-100 min-h-screen flex flex-col justify-center items-center font-sans text-gray-900">
-            <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-xl p-8">
-                <h2 className="text-4xl font-bold text-blue-600 text-center mb-6">Welcome Back</h2>
-                <p className="text-gray-600 text-sm text-center mb-8">
-                    Enter your credentials to access your account
+        <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col justify-center items-center">
+            <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+                <h1 className="text-3xl font-extrabold text-blue-600 text-center mb-6">
+                    Login to Your Account
+                </h1>
+                <p className="text-gray-600 text-center mb-8">
+                    Welcome back! Please enter your details to continue.
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+                        <label className="block text-sm font-bold text-gray-700" htmlFor="email">
                             Email Address
                         </label>
                         <input
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            id="email"
                             type="email"
+                            id="email"
                             placeholder="you@example.com"
                             value={user.email}
                             onChange={handleChange}
                             required
+                            className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700" htmlFor="password">
+                        <label className="block text-sm font-bold text-gray-700" htmlFor="password">
                             Password
                         </label>
                         <input
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            id="password"
                             type="password"
+                            id="password"
                             placeholder="Enter your password"
                             value={user.password}
                             onChange={handleChange}
                             required
+                            className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:ring focus:ring-blue-300 focus:outline-none shadow-sm"
                         />
                     </div>
                     {error && (
-                        <p className="text-red-500 text-sm text-center">
+                        <p className="text-red-500 text-center text-sm">
                             {error}
                         </p>
                     )}
-                    <div className="flex items-center justify-between">
-                        <Link to="/reset-password" className="text-sm text-blue-500 hover:underline">
+                    <div className="flex justify-between items-center">
+                        <Link
+                            to="/reset-password"
+                            className="text-sm text-blue-500 hover:underline"
+                        >
                             Forgot password?
                         </Link>
                         <button
                             type="submit"
-                            className="rounded-md bg-blue-600 py-2 px-6 text-white font-bold hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="rounded-lg bg-blue-600 text-white font-bold px-6 py-2 shadow-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
                         >
                             Login
                         </button>
                     </div>
                 </form>
-                <p className="text-center text-gray-600 text-sm mt-6">
-                    Don't have an account?{' '}
-                    <Link to="/signup" className="text-blue-500 font-medium hover:underline">
-                        Sign up here
-                    </Link>
-                </p>
+                <div className="mt-8 text-center">
+                    <p className="text-sm text-gray-600">
+                        Don't have an account?{' '}
+                        <Link
+                            to="/signup"
+                            className="text-blue-500 font-bold hover:underline"
+                        >
+                            Sign up here
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
     );
