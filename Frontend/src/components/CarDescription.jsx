@@ -14,11 +14,11 @@ const CarDescription = () => {
         const fetchCarDetails = async () => {
             try {
                 const response = await fetch(`${API_URL}/car/get/${carId}`, {
-                    'credentials':'include'
+                    'credentials': 'include'
                 });
                 const data = await response.json();
                 setCar(data);
-                setMainImage(data.images[0].url); 
+                setMainImage(data.images[0].url);
             } catch (error) {
                 console.error('Error fetching car details:', error);
             }
@@ -38,19 +38,18 @@ const CarDescription = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 deleteCar(carId);
-                
             }
         });
     };
+
     const deleteCar = async (carId) => {
-        const API_URL = import.meta.env.VITE_API_BASE_URL;
         try {
             const response = await fetch(`${API_URL}/car/delete/${carId}`, {
                 method: 'DELETE',
-                'credentials':'include'
+                'credentials': 'include'
             });
-            if(response.ok){
-                navigate('/')
+            if (response.ok) {
+                navigate('/');
             }
         } catch (error) {
             console.error('Error deleting car:', error);
@@ -61,32 +60,32 @@ const CarDescription = () => {
     if (!car) return <p>Loading...</p>;
 
     return (
-        <div className="w-screen min-h-screen font-sans bg-gray-50 text-gray-900">
-            <div className="mx-auto max-w-screen-lg px-4 py-8">
+        <div className="w-screen min-h-screen bg-gray-50 font-sans text-gray-900">
+            <div className="container mx-auto px-6 py-12 max-w-screen-xl">
                 <button
                     onClick={() => navigate('/')}
-                    className="mb-6 text-blue-600 hover:underline"
+                    className="mb-6 text-blue-600 hover:underline text-lg"
                 >
                     &larr; Back to Home
                 </button>
-                
-                <h2 className="text-3xl font-bold mb-4">{car.title}</h2>
-    
-                <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+
+                <h2 className="text-4xl font-extrabold text-gray-800 mb-6">{car.title}</h2>
+
+                <div className="grid gap-8 lg:grid-cols-2 grid-cols-1">
                     <div>
                         <img
                             src={mainImage}
                             alt={car.title}
-                            className="rounded-lg shadow-lg w-full h-96 object-cover mb-4"
+                            className="rounded-xl shadow-lg w-full h-96 object-cover mb-6 transition-all duration-300 ease-in-out hover:scale-105"
                         />
-                        
+
                         <div className="flex space-x-4 overflow-x-auto">
                             {car.images.map((img, index) => (
                                 <img
                                     key={index}
                                     src={img.url}
                                     alt={`Thumbnail ${index + 1}`}
-                                    className={`cursor-pointer rounded-lg shadow-md w-24 h-24 object-cover ${
+                                    className={`cursor-pointer rounded-lg shadow-md w-24 h-24 object-cover transition-all duration-200 ease-in-out transform hover:scale-110 ${
                                         mainImage === img.url ? 'ring-2 ring-blue-500' : ''
                                     }`}
                                     onClick={() => setMainImage(img.url)}
@@ -94,27 +93,27 @@ const CarDescription = () => {
                             ))}
                         </div>
                     </div>
-    
-                    <div className="flex flex-col justify-start">
+
+                    <div className="flex flex-col justify-between">
                         <div>
                             <p className="text-lg text-gray-700">{car.description}</p>
-                            <div className="mt-4 text-gray-500">
-                                <p><strong>Type:</strong> {car.tags.car_type}</p>
-                                <p><strong>Company:</strong> {car.tags.company}</p>
-                                <p><strong>Dealer:</strong> {car.tags.dealer}</p>
+                            <div className="mt-4 text-gray-600">
+                                <p><strong className="text-gray-800">Type:</strong> {car.tags.car_type}</p>
+                                <p><strong className="text-gray-800">Company:</strong> {car.tags.company}</p>
+                                <p><strong className="text-gray-800">Dealer:</strong> {car.tags.dealer}</p>
                             </div>
                         </div>
-    
+
                         <div className="mt-8 flex space-x-4">
                             <button
                                 onClick={() => navigate(`/editcar/${car._id}`)}
-                                className="rounded bg-green-600 py-2 px-4 text-lg font-bold text-white"
+                                className="rounded-lg bg-green-600 py-3 px-6 text-white text-lg font-bold transition-all duration-300 ease-in-out hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                             >
                                 Edit
                             </button>
                             <button
                                 onClick={handleDelete}
-                                className="rounded bg-red-600 py-2 px-4 text-lg font-bold text-white"
+                                className="rounded-lg bg-red-600 py-3 px-6 text-white text-lg font-bold transition-all duration-300 ease-in-out hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                             >
                                 Delete
                             </button>
@@ -124,7 +123,6 @@ const CarDescription = () => {
             </div>
         </div>
     );
-    
 };
 
 export default CarDescription;
