@@ -56,9 +56,9 @@ function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
-      <div className="relative w-full max-w-6xl p-8 bg-white bg-opacity-80 rounded-3xl shadow-2xl backdrop-blur-md">
-        <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-400 to-blue-500">
+      <div className="relative w-full max-w-6xl p-8 bg-white bg-opacity-90 rounded-3xl shadow-xl">
+        <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-6">
           Car Management
         </h1>
         {error && (
@@ -72,12 +72,12 @@ function HomePage() {
               placeholder="Search cars..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-full bg-gray-100 text-gray-700 shadow-inner focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition"
+              className="w-full pl-12 pr-4 py-3 rounded-lg bg-gray-100 text-gray-700 shadow-inner focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition"
             />
           </div>
           <button
             onClick={handleSearch}
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold shadow-lg hover:scale-105 transform transition focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+            className="px-6 py-3 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500 text-white font-bold shadow-lg hover:scale-105 transform transition focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
           >
             Search
           </button>
@@ -86,7 +86,7 @@ function HomePage() {
           <h2 className="text-2xl font-bold text-gray-800">Car Listings</h2>
           <button
             onClick={() => navigate("/addcar")}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-lg hover:scale-105 transform transition focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
+            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold shadow-lg hover:scale-105 transform transition focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
           >
             <FiPlus />
             Add Car
@@ -97,23 +97,23 @@ function HomePage() {
             filteredCars.map((car) => (
               <div
                 key={car._id}
-                className="p-6 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {car.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{car.description}</p>
-                <div className="flex gap-2">
+                <div className="flex gap-4">
                   <button
                     onClick={() => navigate(`/editcar/${car._id}`)}
-                    className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition"
+                    className="flex-1 flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition"
                   >
                     <FiEdit />
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(car._id)}
-                    className="flex-1 flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-full font-medium hover:bg-red-600 transition"
+                    className="flex-1 flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition"
                   >
                     <FiTrash />
                     Delete
