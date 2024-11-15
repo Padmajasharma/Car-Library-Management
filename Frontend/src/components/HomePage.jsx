@@ -72,7 +72,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-blue-50 py-16">
       <div className="container mx-auto px-6 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">
