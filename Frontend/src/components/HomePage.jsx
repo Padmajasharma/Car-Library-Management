@@ -73,29 +73,29 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 py-10">
-      <div className="container mx-auto px-4 lg:px-12">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-6xl font-extrabold text-white mb-4">
+          <h1 className="text-5xl font-extrabold text-white mb-4">
             Manage Your Cars
           </h1>
           <p className="text-lg text-gray-100 max-w-2xl mx-auto">
-            Organize and manage your car inventory with ease and elegance.
+            Seamlessly organize and manage your car inventory with a beautiful and intuitive dashboard.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="flex justify-center items-center mb-8">
+        <div className="flex justify-center items-center mb-8 space-x-4">
           <input
             type="text"
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-4 py-3 rounded-xl shadow-md text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-blue-300 outline-none transition-all"
+            className="w-full max-w-lg px-6 py-3 rounded-xl shadow-lg text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-blue-300 outline-none transition-all"
           />
           <button
             onClick={handleSearch}
-            className="ml-4 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all"
+            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-xl hover:bg-blue-700 hover:shadow-2xl transition-all"
           >
             Search
           </button>
@@ -105,22 +105,22 @@ const HomePage = () => {
         <div className="flex justify-end mb-8">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-green-500 text-white font-bold rounded-xl shadow-lg hover:bg-green-600 hover:shadow-xl transition-all"
+            className="px-6 py-3 bg-green-500 text-white font-semibold rounded-xl shadow-xl hover:bg-green-600 hover:shadow-2xl transition-all"
           >
             + Add New Car
           </button>
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer transform hover:scale-105"
               >
-                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
                   {car.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{car.description}</p>
@@ -135,7 +135,7 @@ const HomePage = () => {
                     <strong>Dealer:</strong> {car.tags.dealer}
                   </p>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
