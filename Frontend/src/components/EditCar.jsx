@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const EditCarForm = () => {
-    const {carId}= useParams();
+    const { carId } = useParams();
     const API_URL = import.meta.env.VITE_API_BASE_URL;
     
     const [carDetails, setCarDetails] = useState({
@@ -81,10 +81,8 @@ const EditCarForm = () => {
             setNewImages((prevNewImages) => [...prevNewImages, uploadedImage]);
         }
     };
-    console.log(deletedImages)
 
     const handleImageDelete = (index, image) => {
-        console.log(image);
         setImages((prevImages) => prevImages.filter((_, i) => i !== index));
         if (!newImages.some((img) => img.url === image.url)) {
             setDeletedImages((prevDeletedImages) => [...prevDeletedImages, image.url]);
@@ -128,64 +126,64 @@ const EditCarForm = () => {
         <div className="w-screen font-sans text-gray-900">
             <div className="mx-auto w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
                 <div className="mx-2 text-center md:mx-auto md:w-2/3">
-                    <h2 className="text-3xl font-black leading-4 sm:text-5xl xl:text-6xl">Edit Car</h2>
+                    <h2 className="text-4xl font-extrabold text-indigo-600 sm:text-5xl xl:text-6xl">Edit Car Details</h2>
                 </div>
             </div>
             <div className="mx-auto w-full pb-16 sm:max-w-screen-sm md:max-w-screen-md lg:w-[60%] lg:max-w-screen-lg xl:max-w-screen-xl">
-                <form onSubmit={handleSubmit} className="shadow-lg mb-4 rounded-lg border border-gray-100 py-10 px-8">
-                    <div className="mb-4">
-                        <label htmlFor="title" className="block text-sm font-bold mb-2">Title</label>
+                <form onSubmit={handleSubmit} className="shadow-xl rounded-lg bg-white p-8 mb-4 border-t-8 border-indigo-600">
+                    <div className="mb-6">
+                        <label htmlFor="title" className="block text-sm font-semibold mb-2 text-gray-700">Title</label>
                         <input
                             id="title"
                             type="text"
                             value={carDetails.title}
                             onChange={handleInputChange}
-                            className="w-full rounded border px-3 py-2"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <label htmlFor="description" className="block text-sm font-bold mb-2">Description</label>
+                    <div className="mb-6">
+                        <label htmlFor="description" className="block text-sm font-semibold mb-2 text-gray-700">Description</label>
                         <textarea
                             id="description"
                             value={carDetails.description}
                             onChange={handleInputChange}
-                            className="w-full rounded border px-3 py-2"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="car_type" className="block text-sm font-bold mb-2">Car Type</label>
+                    <div className="mb-6">
+                        <label htmlFor="car_type" className="block text-sm font-semibold mb-2 text-gray-700">Car Type</label>
                         <input
                             id="car_type"
                             type="text"
                             value={carDetails.tags.car_type}
                             onChange={handleInputChange}
-                            className="w-full rounded border px-3 py-2"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="dealer" className="block text-sm font-bold mb-2">Dealer</label>
+                    <div className="mb-6">
+                        <label htmlFor="dealer" className="block text-sm font-semibold mb-2 text-gray-700">Dealer</label>
                         <input
                             id="dealer"
                             type="text"
                             value={carDetails.tags.dealer}
                             onChange={handleInputChange}
-                            className="w-full rounded border px-3 py-2"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="company" className="block text-sm font-bold mb-2">Company</label>
+                    <div className="mb-6">
+                        <label htmlFor="company" className="block text-sm font-semibold mb-2 text-gray-700">Company</label>
                         <input
                             id="company"
                             type="text"
                             value={carDetails.tags.company}
                             onChange={handleInputChange}
-                            className="w-full rounded border px-3 py-2"
+                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <label className="mb-2 block text-sm font-bold">Images</label>
+                    <div className="mb-6">
+                        <label className="block text-sm font-semibold mb-2 text-gray-700">Images</label>
                         <input
                             id="images"
                             type="file"
@@ -196,26 +194,26 @@ const EditCarForm = () => {
                         <button
                             type="button"
                             onClick={() => document.getElementById('images').click()}
-                            className="cursor-pointer rounded bg-blue-600 py-2 px-8 text-center text-lg font-bold text-white"
+                            className="cursor-pointer rounded bg-indigo-600 py-2 px-8 text-lg font-semibold text-white"
                         >
                             {images.length ? "Select More Images" : "Select Images"}
                         </button>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-4">
                         {images.map((image, index) => (
-                            <div key={index} className="relative w-20 h-20">
+                            <div key={index} className="relative w-24 h-24">
                                 <img
                                     src={image.url}
                                     alt="Car"
-                                    className="w-full h-full object-cover rounded"
+                                    className="w-full h-full object-cover rounded-lg shadow-md"
                                 />
                                 <button
                                     type="button"
-                                    className="absolute w-8 h-8 top-0 right-0 bg-red-500 text-white rounded-full px-1"
+                                    className="absolute w-6 h-6 top-0 right-0 bg-red-600 text-white rounded-full text-sm font-bold"
                                     onClick={() => handleImageDelete(index, image)}
                                 >
-                                    X
+                                    &times;
                                 </button>
                             </div>
                         ))}
@@ -226,7 +224,7 @@ const EditCarForm = () => {
                     <div className="flex justify-end mt-6">
                         <button
                             type="submit"
-                            className="cursor-pointer rounded bg-blue-600 py-2 px-8 text-lg font-bold text-white"
+                            className="cursor-pointer rounded bg-indigo-600 py-2 px-8 text-lg font-semibold text-white hover:bg-indigo-700"
                         >
                             Update Car
                         </button>
