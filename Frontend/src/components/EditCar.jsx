@@ -123,36 +123,36 @@ const EditCarForm = () => {
     };
 
     return (
-        <div className="w-screen font-sans bg-gray-50 py-8">
-            <div className="container mx-auto max-w-3xl bg-white p-8 rounded-lg shadow-lg">
-                <div className="text-center mb-6">
-                    <h2 className="text-4xl font-extrabold text-gray-800">Edit Car Details</h2>
+        <div className="w-screen font-sans bg-gray-50 py-12">
+            <div className="container mx-auto max-w-3xl bg-white p-8 rounded-xl shadow-2xl transition-all duration-300 ease-in-out hover:shadow-2xl">
+                <div className="text-center mb-8">
+                    <h2 className="text-4xl font-extrabold text-gray-900">Edit Car Details</h2>
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-6">
+                    <div className="mb-8">
                         <label htmlFor="title" className="block text-lg font-medium text-gray-700 mb-2">Car Title</label>
                         <input
                             id="title"
                             type="text"
                             value={carDetails.title}
                             onChange={handleInputChange}
-                            className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                         />
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-8">
                         <label htmlFor="description" className="block text-lg font-medium text-gray-700 mb-2">Description</label>
                         <textarea
                             id="description"
                             value={carDetails.description}
                             onChange={handleInputChange}
-                            className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            rows="4"
+                            className="w-full p-5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
+                            rows="5"
                         />
                     </div>
 
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 mb-6">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mb-8">
                         <div>
                             <label htmlFor="car_type" className="block text-lg font-medium text-gray-700 mb-2">Car Type</label>
                             <input
@@ -160,7 +160,7 @@ const EditCarForm = () => {
                                 type="text"
                                 value={carDetails.tags.car_type}
                                 onChange={handleInputChange}
-                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                             />
                         </div>
 
@@ -171,7 +171,7 @@ const EditCarForm = () => {
                                 type="text"
                                 value={carDetails.tags.dealer}
                                 onChange={handleInputChange}
-                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                             />
                         </div>
 
@@ -182,12 +182,12 @@ const EditCarForm = () => {
                                 type="text"
                                 value={carDetails.tags.company}
                                 onChange={handleInputChange}
-                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                             />
                         </div>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-8">
                         <label className="block text-lg font-medium text-gray-700 mb-2">Images</label>
                         <input
                             id="images"
@@ -199,15 +199,15 @@ const EditCarForm = () => {
                         <button
                             type="button"
                             onClick={() => document.getElementById('images').click()}
-                            className="cursor-pointer py-2 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="cursor-pointer py-3 px-8 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                         >
                             {images.length ? "Select More Images" : "Select Images"}
                         </button>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 mb-6">
+                    <div className="flex flex-wrap gap-4 mb-8">
                         {images.map((image, index) => (
-                            <div key={index} className="relative w-24 h-24 rounded-md overflow-hidden shadow-lg">
+                            <div key={index} className="relative w-32 h-32 rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:scale-105">
                                 <img
                                     src={image.url}
                                     alt="Car"
@@ -215,7 +215,7 @@ const EditCarForm = () => {
                                 />
                                 <button
                                     type="button"
-                                    className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1"
+                                    className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 transition-all duration-200 ease-in-out hover:bg-red-700"
                                     onClick={() => handleImageDelete(index, image)}
                                 >
                                     &times;
@@ -224,12 +224,12 @@ const EditCarForm = () => {
                         ))}
                     </div>
 
-                    {error && <p className="text-red-600 mb-4">{error}</p>}
+                    {error && <p className="text-red-600 mb-6">{error}</p>}
 
-                    <div className="flex justify-end">
+                    <div className="text-center">
                         <button
                             type="submit"
-                            className="py-3 px-8 bg-blue-600 text-white font-medium text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="py-3 px-8 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out"
                         >
                             Update Car
                         </button>
