@@ -1,33 +1,30 @@
-Here's a sample `README.md` file for your MERN stack project based on the provided instructions:
+# Car Library Management System
 
----
+This is a full-stack web application built using the **MERN stack** (MongoDB, Express, React, Node.js). The system allows users to manage a car library with functionalities to **view, add, update, and delete** car information. The project is divided into two parts: the **frontend** (React) and the **backend** (Node.js with Express and MongoDB).
 
-# Car Management System
-
-This project is a full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js). It allows users to manage a car library with functionalities to view, add, update, and delete car information. The project is divided into two parts: frontend (React) and backend (Node.js with Express and MongoDB).
-
-LIVE LINK : https://car-library-management.vercel.app/
+**LIVE LINK**: [Car Management System](https://car-library-management.vercel.app/)
 
 ## Prerequisites
 
-Before getting started, ensure you have the following installed:
+Before starting the project, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (preferably the latest LTS version)
-- [MongoDB](https://www.mongodb.com/try/download/community) (running locally or using a cloud service like MongoDB Atlas)
+- [MongoDB](https://www.mongodb.com/try/download/community) (either running locally or using a cloud service like MongoDB Atlas)
 
 ## Getting Started
 
-### Step 1: Clone the repository
+Follow these steps to get the project up and running:
 
-First, clone the repository to your local machine.
+### Step 1: Clone the Repository
+
+Clone the repository to your local machine using the following command:
 
 ```bash
 git clone https://github.com/Amanyara21/Spyne-Assignment
 cd Spyne-Assignment
 ```
 
-
-### Step 2: Frontend Setup
+### Step 2: Set Up the Frontend
 
 1. Navigate to the frontend directory:
 
@@ -35,13 +32,13 @@ cd Spyne-Assignment
     cd car_library
     ```
 
-2. Create a `.env` file inside the `car_library` folder and add the following environment variable:
+2. Create a `.env` file in the `car_library` folder and add the following environment variable:
 
     ```bash
     VITE_API_BASE_URL=http://localhost:5000/api
     ```
 
-3. Install the necessary dependencies:
+3. Install the frontend dependencies:
 
     ```bash
     npm install
@@ -53,18 +50,18 @@ cd Spyne-Assignment
     npm run dev
     ```
 
-   This will start the frontend on `http://localhost:5173`.
+   The frontend should now be available at `http://localhost:5173`.
 
-### Step 3: Backend Setup
+### Step 3: Set Up the Backend
 
 1. Navigate to the backend directory:
 
     ```bash
-    cd ..
+    cd .. 
     cd backend
     ```
 
-2. Create a `.env` file inside the `backend` folder and add the following environment variables:
+2. Create a `.env` file in the `backend` folder and add the following environment variables:
 
     ```bash
     MONGO_URI=mongodb://localhost:27017/carmanagement
@@ -72,7 +69,7 @@ cd Spyne-Assignment
     FRONTEND_URL=http://localhost:5173
     ```
 
-   - `MONGO_URI` is the connection string to your MongoDB database.
+   - `MONGO_URI` specifies the connection string to your MongoDB database.
    - `JWT_SECRET` is the secret key for generating JSON Web Tokens.
    - `FRONTEND_URL` is the URL of the frontend application.
 
@@ -88,15 +85,21 @@ cd Spyne-Assignment
     npm start
     ```
 
-   This will start the backend on `http://localhost:5000`.
+   The backend should now be available at `http://localhost:5000`.
 
 ### Step 4: Access the Application
 
-Once both frontend and backend servers are running:
+Once both frontend and backend servers are running, you can access the application:
 
-- Visit the frontend at [http://localhost:5173](http://localhost:5173).
-- The application should be fully functional, allowing you to interact with the car library.
+- **Frontend**: Visit [http://localhost:5173](http://localhost:5173)
+- The application should be fully functional and allow you to interact with the car library (view, add, update, and delete cars).
 
+## Technologies Used
+
+- **Frontend**: React, Vite
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Authentication**: JWT (JSON Web Tokens)
 
 ## Technologies Used
 
