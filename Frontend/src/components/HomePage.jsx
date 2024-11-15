@@ -72,30 +72,30 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10">
-      <div className="container mx-auto px-4 lg:px-12">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-gray-200 to-pink-100 py-12">
+      <div className="container mx-auto px-6 lg:px-16">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-6xl font-extrabold text-gray-800 mb-4">
+          <h1 className="text-5xl font-extrabold text-gray-800 mb-6 transform transition duration-500 hover:scale-105">
             Manage Your Cars
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Easily organize and manage your car inventory with our intuitive dashboard.
+            Easily organize and manage your car inventory with our user-friendly dashboard.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="flex justify-center items-center mb-8">
+        <div className="flex justify-center items-center mb-10">
           <input
             type="text"
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-4 py-3 rounded-xl shadow-md text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-blue-300 outline-none transition-all"
+            className="w-full max-w-lg px-5 py-3 rounded-2xl shadow-lg text-gray-700 border-2 border-gray-300 focus:ring-4 focus:ring-teal-300 outline-none transition-all transform duration-300"
           />
           <button
             onClick={handleSearch}
-            className="ml-4 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all"
+            className="ml-4 px-6 py-3 bg-teal-600 text-white font-semibold rounded-2xl shadow-lg hover:bg-teal-700 transition-all transform duration-300"
           >
             Search
           </button>
@@ -105,7 +105,7 @@ const HomePage = () => {
         <div className="flex justify-end mb-8">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-green-500 text-white font-bold rounded-xl shadow-lg hover:bg-green-600 hover:shadow-xl transition-all"
+            className="px-6 py-3 bg-green-500 text-white font-semibold rounded-2xl shadow-lg hover:bg-green-600 transition-all transform duration-300"
           >
             + Add New Car
           </button>
@@ -118,9 +118,9 @@ const HomePage = () => {
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                className="p-6 bg-white rounded-2xl shadow-xl hover:shadow-2xl transform transition-all cursor-pointer hover:scale-105"
               >
-                <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4 transform transition duration-500 hover:text-teal-600">
                   {car.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{car.description}</p>
@@ -135,7 +135,7 @@ const HomePage = () => {
                     <strong>Dealer:</strong> {car.tags.dealer}
                   </p>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-4">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
