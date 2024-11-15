@@ -24,7 +24,7 @@ function App() {
 }
 
 function AuthCheck() {
-  const API_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_URL = 'https://car-library-management-1.onrender.com';
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
