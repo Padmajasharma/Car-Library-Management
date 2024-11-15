@@ -41,8 +41,6 @@ const AddCarForm = () => {
         }
     };
 
-
-
     const handleImageUpload = async (files) => {
         const uploadedImages = [];
 
@@ -96,6 +94,7 @@ const AddCarForm = () => {
                 setError(result.error);
                 return;
             }
+
             Swal.fire('Added!', 'Car added successfully.', 'success');
 
             setCarDetails({
@@ -123,7 +122,7 @@ const AddCarForm = () => {
                     <h2 className="text-3xl font-black leading-4 sm:text-5xl xl:text-6xl">Add Car</h2>
                 </div>
             </div>
-            <div className=" mx-auto w-full pb-16 sm:max-w-screen-sm md:max-w-screen-md lg:w-[60%] lg:max-w-screen-lg xl:max-w-screen-xl">
+            <div className="mx-auto w-full pb-16 sm:max-w-screen-sm md:max-w-screen-md lg:w-[60%] lg:max-w-screen-lg xl:max-w-screen-xl">
                 <form onSubmit={handleSubmit} className="shadow-lg mb-4 rounded-lg border border-gray-100 py-10 px-8">
                     <div className="mb-4">
                         <label className="mb-2 block text-sm font-bold" htmlFor="title">
@@ -147,7 +146,6 @@ const AddCarForm = () => {
                         <textarea
                             className="shadow-sm w-full cursor-text appearance-none rounded border border-gray-300 py-2 px-3 leading-tight outline-none ring-blue-500 focus:ring"
                             id="description"
-                            type="text"
                             placeholder="Enter description"
                             value={carDetails.description}
                             onChange={handleInputChange}
@@ -200,7 +198,6 @@ const AddCarForm = () => {
                         />
                     </div>
 
-
                     <div className="mb-4">
                         <label className="mb-2 block text-sm font-bold">Images</label>
                         <input
@@ -237,7 +234,6 @@ const AddCarForm = () => {
                                 </button>
                             </div>
                         ))}
-
                     </div>
 
                     {error && <p className="text-red-600 mt-4">{error}</p>}
@@ -252,7 +248,7 @@ const AddCarForm = () => {
                     </div>
                 </form>
             </div>
-        </div >
+        </div>
     );
 };
 
