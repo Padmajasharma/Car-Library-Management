@@ -5,14 +5,14 @@ import Swal from 'sweetalert2';
 const EditCarForm = () => {
     const { carId } = useParams();
     const API_URL = import.meta.env.VITE_API_BASE_URL;
-    
+
     const [carDetails, setCarDetails] = useState({
         title: '',
         description: '',
         tags: {
             car_type: '',
             company: '',
-            dealer: ''
+            dealer: '',
         },
     });
     const [images, setImages] = useState([]);
@@ -55,7 +55,7 @@ const EditCarForm = () => {
             tags: {
                 ...prev.tags,
                 [id]: ['car_type', 'company', 'dealer'].includes(id) ? value : prev.tags[id],
-            }
+            },
         }));
     };
 
@@ -123,67 +123,72 @@ const EditCarForm = () => {
     };
 
     return (
-        <div className="w-screen font-sans text-gray-900">
-            <div className="mx-auto w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-                <div className="mx-2 text-center md:mx-auto md:w-2/3">
-                    <h2 className="text-4xl font-extrabold text-indigo-600 sm:text-5xl xl:text-6xl">Edit Car Details</h2>
+        <div className="w-screen font-sans bg-gray-50 py-8">
+            <div className="container mx-auto max-w-3xl bg-white p-8 rounded-lg shadow-lg">
+                <div className="text-center mb-6">
+                    <h2 className="text-4xl font-extrabold text-gray-800">Edit Car Details</h2>
                 </div>
-            </div>
-            <div className="mx-auto w-full pb-16 sm:max-w-screen-sm md:max-w-screen-md lg:w-[60%] lg:max-w-screen-lg xl:max-w-screen-xl">
-                <form onSubmit={handleSubmit} className="shadow-xl rounded-lg bg-white p-8 mb-4 border-t-8 border-indigo-600">
+
+                <form onSubmit={handleSubmit}>
                     <div className="mb-6">
-                        <label htmlFor="title" className="block text-sm font-semibold mb-2 text-gray-700">Title</label>
+                        <label htmlFor="title" className="block text-lg font-medium text-gray-700 mb-2">Car Title</label>
                         <input
                             id="title"
                             type="text"
                             value={carDetails.title}
                             onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
+                            className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
                     <div className="mb-6">
-                        <label htmlFor="description" className="block text-sm font-semibold mb-2 text-gray-700">Description</label>
+                        <label htmlFor="description" className="block text-lg font-medium text-gray-700 mb-2">Description</label>
                         <textarea
                             id="description"
                             value={carDetails.description}
                             onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="car_type" className="block text-sm font-semibold mb-2 text-gray-700">Car Type</label>
-                        <input
-                            id="car_type"
-                            type="text"
-                            value={carDetails.tags.car_type}
-                            onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="dealer" className="block text-sm font-semibold mb-2 text-gray-700">Dealer</label>
-                        <input
-                            id="dealer"
-                            type="text"
-                            value={carDetails.tags.dealer}
-                            onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="company" className="block text-sm font-semibold mb-2 text-gray-700">Company</label>
-                        <input
-                            id="company"
-                            type="text"
-                            value={carDetails.tags.company}
-                            onChange={handleInputChange}
-                            className="w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-4 py-2"
+                            className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            rows="4"
                         />
                     </div>
 
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 mb-6">
+                        <div>
+                            <label htmlFor="car_type" className="block text-lg font-medium text-gray-700 mb-2">Car Type</label>
+                            <input
+                                id="car_type"
+                                type="text"
+                                value={carDetails.tags.car_type}
+                                onChange={handleInputChange}
+                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="dealer" className="block text-lg font-medium text-gray-700 mb-2">Dealer</label>
+                            <input
+                                id="dealer"
+                                type="text"
+                                value={carDetails.tags.dealer}
+                                onChange={handleInputChange}
+                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="company" className="block text-lg font-medium text-gray-700 mb-2">Company</label>
+                            <input
+                                id="company"
+                                type="text"
+                                value={carDetails.tags.company}
+                                onChange={handleInputChange}
+                                className="w-full p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+                    </div>
+
                     <div className="mb-6">
-                        <label className="block text-sm font-semibold mb-2 text-gray-700">Images</label>
+                        <label className="block text-lg font-medium text-gray-700 mb-2">Images</label>
                         <input
                             id="images"
                             type="file"
@@ -194,23 +199,23 @@ const EditCarForm = () => {
                         <button
                             type="button"
                             onClick={() => document.getElementById('images').click()}
-                            className="cursor-pointer rounded bg-indigo-600 py-2 px-8 text-lg font-semibold text-white"
+                            className="cursor-pointer py-2 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             {images.length ? "Select More Images" : "Select Images"}
                         </button>
                     </div>
 
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-4 mb-6">
                         {images.map((image, index) => (
-                            <div key={index} className="relative w-24 h-24">
+                            <div key={index} className="relative w-24 h-24 rounded-md overflow-hidden shadow-lg">
                                 <img
                                     src={image.url}
                                     alt="Car"
-                                    className="w-full h-full object-cover rounded-lg shadow-md"
+                                    className="w-full h-full object-cover"
                                 />
                                 <button
                                     type="button"
-                                    className="absolute w-6 h-6 top-0 right-0 bg-red-600 text-white rounded-full text-sm font-bold"
+                                    className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1"
                                     onClick={() => handleImageDelete(index, image)}
                                 >
                                     &times;
@@ -219,12 +224,12 @@ const EditCarForm = () => {
                         ))}
                     </div>
 
-                    {error && <p className="text-red-600 mt-4">{error}</p>}
+                    {error && <p className="text-red-600 mb-4">{error}</p>}
 
-                    <div className="flex justify-end mt-6">
+                    <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="cursor-pointer rounded bg-indigo-600 py-2 px-8 text-lg font-semibold text-white hover:bg-indigo-700"
+                            className="py-3 px-8 bg-blue-600 text-white font-medium text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             Update Car
                         </button>
