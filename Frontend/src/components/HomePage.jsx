@@ -72,16 +72,16 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 py-16">
+    <div className="min-h-screen bg-gradient-to-r from-blue-400 via-teal-500 to-blue-600 py-16">
       <div className="container mx-auto px-6 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-semibold text-gray-900 mb-4">
+          <h1 className="text-6xl font-extrabold text-white mb-4 tracking-wide">
             Manage Your Cars
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A sleek dashboard to organize and manage your car collection with
-            ease.
+          <p className="text-lg text-white max-w-2xl mx-auto">
+            Effortlessly organize your car inventory with a modern and
+            intuitive dashboard.
           </p>
         </div>
 
@@ -92,11 +92,11 @@ const HomePage = () => {
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-5 py-3 rounded-xl text-lg text-gray-900 shadow-md focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+            className="w-full max-w-lg px-5 py-3 rounded-2xl text-lg text-gray-900 shadow-lg focus:ring-4 focus:ring-teal-300 outline-none transition-all"
           />
           <button
             onClick={handleSearch}
-            className="px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-indigo-700 transition-all"
+            className="px-6 py-3 bg-teal-600 text-white text-lg font-semibold rounded-2xl shadow-md hover:bg-teal-700 transition-all"
           >
             Search
           </button>
@@ -106,7 +106,7 @@ const HomePage = () => {
         <div className="flex justify-end mb-10">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-green-500 text-white font-semibold rounded-xl shadow-md hover:bg-green-600 transition-all"
+            className="px-6 py-3 bg-green-500 text-white font-semibold rounded-2xl shadow-md hover:bg-green-600 transition-all"
           >
             + Add New Car
           </button>
@@ -119,7 +119,7 @@ const HomePage = () => {
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all"
+                className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer transform hover:scale-105"
               >
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                   {car.title}
@@ -159,7 +159,7 @@ const HomePage = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500 text-lg col-span-full">
+            <p className="text-center text-white text-lg col-span-full">
               No cars found. Try searching with different keywords.
             </p>
           )}
