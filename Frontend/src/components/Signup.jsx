@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FiUser, FiMail, FiLock } from "react-icons/fi";
 
 function Signup() {
   const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -51,80 +52,67 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200">
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-xl p-8">
-        <h2 className="text-2xl font-extrabold text-gray-800 text-center mb-6">
-          Create Your Account
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
+      <div className="relative w-full max-w-md p-8 bg-white bg-opacity-70 rounded-3xl shadow-2xl backdrop-blur-md">
+        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
+          Create Account
         </h2>
-        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Full Name
-            </label>
+        {error && (
+          <p className="text-red-600 text-center text-sm mb-4">{error}</p>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="relative">
+            <FiUser className="absolute left-4 top-3 text-gray-400" />
             <input
               id="name"
               type="text"
-              placeholder="Enter your name"
+              placeholder="Full Name"
               value={user.name}
               onChange={handleChange}
-              className="w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-12 pr-4 py-3 rounded-full bg-gray-100 text-gray-700 shadow-inner focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition"
               required
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Email Address
-            </label>
+          <div className="relative">
+            <FiMail className="absolute left-4 top-3 text-gray-400" />
             <input
               id="email"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Email Address"
               value={user.email}
               onChange={handleChange}
-              className="w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-12 pr-4 py-3 rounded-full bg-gray-100 text-gray-700 shadow-inner focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition"
               required
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Password
-            </label>
+          <div className="relative">
+            <FiLock className="absolute left-4 top-3 text-gray-400" />
             <input
               id="password"
               type="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               value={user.password}
               onChange={handleChange}
-              className="w-full rounded-md border-gray-300 shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-12 pr-4 py-3 rounded-full bg-gray-100 text-gray-700 shadow-inner focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
+            className="w-full py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-bold shadow-lg hover:scale-105 transform transition focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
           >
             Sign Up
           </button>
-          <p className="text-center text-sm text-gray-600 mt-4">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="text-blue-600 hover:text-blue-700 font-medium"
-            >
-              Log in
-            </Link>
-          </p>
         </form>
+        <p className="text-center text-sm text-gray-700 mt-4">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-pink-500 font-semibold hover:underline"
+          >
+            Log in
+          </Link>
+        </p>
       </div>
     </div>
   );
