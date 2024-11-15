@@ -72,55 +72,57 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-800 py-16">
       <div className="container mx-auto px-6 lg:px-16">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Manage Your Cars</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Keep track of your cars in a clean and simple dashboard.
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
+            Manage Your Cars
+          </h1>
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+            A sleek dashboard to organize and manage your car collection with ease.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="flex justify-center items-center mb-12 space-x-4">
+        <div className="flex justify-center items-center mb-10 space-x-6">
           <input
             type="text"
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-5 py-3 rounded-lg shadow-sm border focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-300 ease-in-out"
+            className="w-full max-w-lg px-5 py-4 rounded-full text-lg text-gray-900 shadow-lg focus:ring-4 focus:ring-blue-500 outline-none transition-all"
           />
           <button
             onClick={handleSearch}
-            className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold shadow-md hover:bg-blue-600 transition duration-300 ease-in-out"
+            className="px-6 py-4 bg-blue-600 text-white text-lg font-semibold rounded-full shadow-md hover:bg-blue-700 transition-all"
           >
             Search
           </button>
         </div>
 
         {/* Add Car Button */}
-        <div className="flex justify-end mb-8">
+        <div className="flex justify-end mb-10">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold shadow-md hover:bg-green-600 transition duration-300 ease-in-out"
+            className="px-6 py-4 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition-all"
           >
             + Add New Car
           </button>
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="p-6 bg-white rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all cursor-pointer"
               >
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">{car.title}</h3>
-                <p className="text-gray-700 mb-4">{car.description}</p>
-                <div className="text-sm text-gray-500 space-y-1 mb-4">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">{car.title}</h3>
+                <p className="text-gray-600 mb-4">{car.description}</p>
+                <div className="text-sm text-gray-500 space-y-2 mb-4">
                   <p>
                     <strong>Type:</strong> {car.tags.car_type}
                   </p>
@@ -137,7 +139,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       navigate(`/editcar/${car._id}`);
                     }}
-                    className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-medium shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out"
+                    className="px-4 py-2 bg-yellow-500 text-white rounded-full font-medium shadow-lg hover:bg-yellow-600 transition-all"
                   >
                     Edit
                   </button>
@@ -146,7 +148,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       handleDelete(car._id);
                     }}
-                    className="px-4 py-2 bg-red-500 text-white rounded-lg font-medium shadow-md hover:bg-red-600 transition duration-300 ease-in-out"
+                    className="px-4 py-2 bg-red-500 text-white rounded-full font-medium shadow-lg hover:bg-red-600 transition-all"
                   >
                     Delete
                   </button>
@@ -154,7 +156,7 @@ const HomePage = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500 text-lg col-span-full">
+            <p className="text-center text-gray-400 text-lg col-span-full">
               No cars found. Try searching with different keywords.
             </p>
           )}
