@@ -72,57 +72,53 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-bl from-pink-100 via-indigo-100 to-teal-200 py-16">
+    <div className="min-h-screen bg-gray-100 py-16">
       <div className="container mx-auto px-6 lg:px-16">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-extrabold text-gradient bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 bg-clip-text mb-4">
-            Manage Your Cars
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-            Effortlessly manage your car inventory with our sleek and intuitive dashboard.
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Manage Your Cars</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Keep track of your cars in a clean and simple dashboard.
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="flex justify-center items-center mb-12">
+        <div className="flex justify-center items-center mb-12 space-x-4">
           <input
             type="text"
             placeholder="Search cars by title, description, or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-lg px-5 py-3 rounded-lg shadow-xl text-gray-800 border-2 border-pink-500 focus:ring-4 focus:ring-teal-400 outline-none transition-all transform duration-300 ease-in-out"
+            className="w-full max-w-lg px-5 py-3 rounded-lg shadow-sm border focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-300 ease-in-out"
           />
           <button
             onClick={handleSearch}
-            className="ml-4 px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold rounded-lg shadow-xl hover:bg-gradient-to-r hover:from-teal-400 hover:to-blue-400 transition-all transform duration-300 ease-in-out"
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold shadow-md hover:bg-blue-600 transition duration-300 ease-in-out"
           >
             Search
           </button>
         </div>
 
         {/* Add Car Button */}
-        <div className="flex justify-end mb-10">
+        <div className="flex justify-end mb-8">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-3 bg-gradient-to-r from-green-400 to-lime-500 text-white font-semibold rounded-lg shadow-xl hover:bg-gradient-to-r hover:from-green-300 hover:to-lime-400 transition-all transform duration-300 ease-in-out"
+            className="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold shadow-md hover:bg-green-600 transition duration-300 ease-in-out"
           >
             + Add New Car
           </button>
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-8 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all transform duration-500 cursor-pointer hover:scale-105"
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
-                <h3 className="text-3xl font-semibold text-gradient bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text mb-4 transform transition-all duration-500 hover:text-teal-500">
-                  {car.title}
-                </h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">{car.title}</h3>
                 <p className="text-gray-700 mb-4">{car.description}</p>
                 <div className="text-sm text-gray-500 space-y-1 mb-4">
                   <p>
@@ -141,7 +137,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       navigate(`/editcar/${car._id}`);
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg font-medium shadow-md hover:bg-gradient-to-r hover:from-indigo-400 hover:to-purple-400 transition-all transform duration-300 ease-in-out"
+                    className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-medium shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out"
                   >
                     Edit
                   </button>
@@ -150,7 +146,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       handleDelete(car._id);
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg font-medium shadow-md hover:bg-gradient-to-r hover:from-red-400 hover:to-pink-400 transition-all transform duration-300 ease-in-out"
+                    className="px-4 py-2 bg-red-500 text-white rounded-lg font-medium shadow-md hover:bg-red-600 transition duration-300 ease-in-out"
                   >
                     Delete
                   </button>
