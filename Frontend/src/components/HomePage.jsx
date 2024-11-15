@@ -43,11 +43,11 @@ const HomePage = () => {
   const handleDelete = (carId) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "Do you want to delete this car?",
+      text: "This action cannot be undone.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -64,7 +64,7 @@ const HomePage = () => {
       });
       if (response.ok) {
         fetchCars();
-        Swal.fire("Deleted!", "The car has been deleted.", "success");
+        Swal.fire("Deleted!", "The car has been removed.", "success");
       }
     } catch (error) {
       console.error("Error deleting car:", error);
@@ -72,24 +72,27 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-purple-100 via-white to-blue-100 py-8">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-            Car Management
-          </h2>
-          <div className="flex justify-center items-center mt-4">
+          <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
+            Car Management System
+          </h1>
+          <p className="text-lg text-gray-600 mb-8">
+            Manage your car inventory effortlessly.
+          </p>
+          <div className="flex justify-center items-center">
             <input
               type="text"
               placeholder="Search cars..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full max-w-md px-4 py-2 text-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full max-w-md px-4 py-3 text-gray-700 rounded-lg shadow-sm border-2 border-gray-300 focus:ring-2 focus:ring-blue-500 transition"
             />
             <button
               onClick={handleSearch}
-              className="ml-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition"
+              className="ml-4 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition"
             >
               Search
             </button>
@@ -97,29 +100,29 @@ const HomePage = () => {
         </div>
 
         {/* Add Car Button */}
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-end mt-8">
           <button
             onClick={() => navigate("/addcar")}
-            className="px-6 py-2 bg-green-600 text-white font-bold rounded-lg shadow-md hover:bg-green-700 transition"
+            className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition"
           >
-            Add New Car
+            + Add New Car
           </button>
         </div>
 
         {/* Cars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {filteredCars.length > 0 ? (
             filteredCars.map((car) => (
               <div
                 key={car._id}
                 onClick={() => navigate(`/cardescription/${car._id}`)}
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition cursor-pointer"
+                className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   {car.title}
                 </h3>
-                <p className="text-gray-700 mb-4">{car.description}</p>
-                <div className="text-sm text-gray-600">
+                <p className="text-gray-600 mb-4">{car.description}</p>
+                <div className="text-sm text-gray-500 space-y-1">
                   <p>
                     <strong>Type:</strong> {car.tags.car_type}
                   </p>
@@ -130,13 +133,13 @@ const HomePage = () => {
                     <strong>Dealer:</strong> {car.tags.dealer}
                   </p>
                 </div>
-                <div className="flex justify-between mt-4">
+                <div className="flex justify-between mt-6">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/editcar/${car._id}`);
                     }}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium shadow-md hover:bg-blue-600 transition"
                   >
                     Edit
                   </button>
@@ -145,7 +148,7 @@ const HomePage = () => {
                       e.stopPropagation();
                       handleDelete(car._id);
                     }}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                    className="px-4 py-2 bg-red-500 text-white rounded-md font-medium shadow-md hover:bg-red-600 transition"
                   >
                     Delete
                   </button>
@@ -153,7 +156,9 @@ const HomePage = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500">No cars found.</p>
+            <p className="text-center text-gray-500 text-lg col-span-full">
+              No cars found.
+            </p>
           )}
         </div>
       </div>
